@@ -1,8 +1,16 @@
 import joblib
-from preprocessing import stemming
+from src.preprocessing import stemming
 
-vectorizer = joblib.load("../../models/vectorizer.pkl")
-model = joblib.load("../../models/logistic_model.pkl")
+import os
+
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+VECTORIZER_PATH = os.path.join(BASE_DIR, "models", "vectorizer.pkl")
+MODEL_PATH = os.path.join(BASE_DIR, "models", "logistic_model.pkl")
+
+vectorizer = joblib.load(VECTORIZER_PATH)
+model = joblib.load(MODEL_PATH)
+
 
 
 def predict_sentiment(txt):
